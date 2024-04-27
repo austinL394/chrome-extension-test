@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <h3>Currency Rate Converter</h3>
+    <button id="convert">Calculate conversion rate</button>
+    <div>
+        <p>Convert from </p>
+        <select id="currency-from">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="INR">INR</option>
+            <option value="CNY">CNY</option>
+            <option value="GBP">GBP</option>
+            <option value="AUD">AUD</option>
+            <option value="SEK">SEK</option>
+            <option value="CAD">CAD</option>
+            <option value="HKD">HKD</option>
+            <option value="JPY">JPY</option>
+        </select>
+        <input id="amount" type="number" placeholder="Amount">
+    </div>
+    <div>
+        <p>
+            to
+        </p>
+        <select id="currency-to">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="INR">INR</option>
+            <option value="CNY">CNY</option>
+            <option value="GBP">GBP</option>
+            <option value="AUD">AUD</option>
+            <option value="SEK">SEK</option>
+            <option value="CAD">CAD</option>
+            <option value="HKD">HKD</option>
+            <option value="JPY">JPY</option>
+        </select>
+        <p id="result"></p>
+
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

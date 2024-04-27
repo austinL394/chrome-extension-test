@@ -1,6 +1,5 @@
 const db = require("../models");
 const Product = db.products;
-const Op = db.Sequelize.Op;
 
 // Create and Save a new Product
 exports.create = (req, res) => {
@@ -34,7 +33,7 @@ exports.create = (req, res) => {
 // Retrieve all Products from the database.
 exports.findAll = (req, res) => {
 
-  Product.findAll()
+  Product.findAll({ order: [['createdAt', 'DESC']]})
     .then(data => {
       res.send(data);
     })
