@@ -2,12 +2,20 @@ const db = require("../models");
 const Product = db.products;
 
 // Create and Save a new Product
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
+  console.log("@ product create Api", req.body);
   // Validate request
   if (!req.body.name || !req.body.image) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
+    return;
+  }
+
+  const productExists = await Product.findOne({ where: { name: req.body.name }});
+
+  if(productExists) {
+    res.status(400).send({ message: 'product already exists'});
     return;
   }
 
