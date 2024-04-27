@@ -3,53 +3,44 @@ const Product = db.products;
 
 // Create and Save a new Product
 exports.create = async (req, res) => {
-  console.log("@ product create Api", req.body);
-  // Validate request
-  if (!req.body.name || !req.body.image) {
-    res.status(400).send({
-      message: "Content can not be empty!"
+  try {
+    // Validate request
+    if (!req.body.name || !req.body.image) {
+      return res.status(400).send({ message: "Content cannot be empty!" });
+    }
+
+    // Check if product already exists
+    const existingProduct = await Product.findOne({
+      where: { name: req.body.name },
     });
-    return;
-  }
+    if (existingProduct) {
+      return res.status(400).send({ message: "Product already exists" });
+    }
 
-  const productExists = await Product.findOne({ where: { name: req.body.name }});
-
-  if(productExists) {
-    res.status(400).send({ message: 'product already exists'});
-    return;
-  }
-
-  // Create a Product
-  const product = {
-    name: req.body.name,
-    image: req.body.image,
-  };
-
-  // Save Product in the database
-  Product.create(product)
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Product."
-      });
+    // Create a new product
+    const product = await Product.create({
+      name: req.body.name,
+      image: req.body.image,
     });
+
+    res.status(201).send(product);
+  } catch (error) {
+    res.status(500).send({
+      message:
+        error.message || "Some error occurred while creating the product.",
+    });
+  }
 };
 
-// Retrieve all Products from the database.
-exports.findAll = (req, res) => {
-
-  Product.findAll({ order: [['createdAt', 'DESC']]})
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Products."
-      });
+// Retrieve all Products from the database
+exports.findAll = async (req, res) => {
+  try {
+    const products = await Product.findAll({ order: [["createdAt", "DESC"]] });
+    res.send(products);
+  } catch (error) {
+    res.status(500).send({
+      message:
+        error.message || "Some error occurred while retrieving products.",
     });
+  }
 };
-
