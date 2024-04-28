@@ -15,12 +15,7 @@ This app is a chrome extension that embeds UI widgets into Shopify platforms to:
 - Embedding custom UI widgets into Shopify webpages required synchronization with existing DOM elements.
 
 
-# Screenshots
+# Features
 - The extension scrapes the product detail page and store images to databsae through a RESTful API call to the Node.js backend
 - View History icon displays a custom modal to show the latest event logs.
-<br>
-![Events](https://github.com/austinL394/chrome-extension-test/blob/main/extension/images/cart.jpg?raw=true)
-
 - The extension displays the information about the cart with product information and total price.
-<br>
-![Carts](images/cart.jpg)
