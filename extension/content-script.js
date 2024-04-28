@@ -281,7 +281,7 @@ function attachEventHandlers() {
 
 setTimeout(async () => {
   console.log(" initializing!");
-  if (location.pathname.indexOf("cart") != -1) {
+  if (location.pathname.indexOf("cart") !== -1) {
     await initWidget();
     attachEventHandlers();
   } else {
