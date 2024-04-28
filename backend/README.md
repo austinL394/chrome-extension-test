@@ -43,7 +43,7 @@ After creating some new Tutorials, you can check PostgreSQL table:
 ## Environment Requireemtns
 
 - Node.js 18.0
-- PostgresDB
+- PostgresDB 16.2
 
 ## Project setup
 ### Clone the Repository
@@ -57,5 +57,6 @@ npm install
 
 ### Run
 ```
-node server.js
+npm start
 ```
+Server should be available at Port Number: 8080
