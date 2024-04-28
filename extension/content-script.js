@@ -107,7 +107,6 @@ function createCartInfoModal() {
   // Adding inner HTML content
   modalContainer.innerHTML = `
   <h2>Cart Information</h2>
-  
   <div id="cartItemsContainer"></div>
   <div id="totalPriceContainer"></div>
   <button id="closeButton" class="button" style="margin-top:20px;" >Close</button>
@@ -143,7 +142,6 @@ function createEventInfoModal() {
 
   modalContainer.innerHTML = `
   <h2>Event History</h2>
-  
   <div id="eventsContainer"></div>
   <button id="closeButton" class="button" style="margin-top:20px;" >Close</button>
   `;
