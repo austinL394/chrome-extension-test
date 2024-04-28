@@ -39,3 +39,9 @@ git clone git@github.com:austinL394/chrome-extension-test.git
 <br>
 
 ![Carts](./images/cart.jpg "Cart Info")
+<br>
+
+- The extension calculates conversion rate between different types of currencies.
+<br>
+
+![Currencies](./images/calculator.jpg "Calculator")
