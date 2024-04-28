@@ -1,4 +1,42 @@
 
+/**
+ * @description 1. Creates an SVG widget container and a checkbox for selecting the
+ * widget.
+ * 2/ Adds the widget to the container based on the user's selection.
+ * 3/ Displays cart information or event details when the checkbox is checked.
+ * 
+ * @returns { SVG element containing widgets, as it generates an SVG path for each
+ * widget and appends it to the page. } a HTML code snippet that creates a widget
+ * with a button and a text input, and adds an event listener to the button.
+ * 
+ * 	1/ `widget`: This is the HTML widget element created by the function, which
+ * contains the main content and event handlers for the custom widget.
+ * 	2/ `div`: The `div` element within the `widget` element contains the custom
+ * widget's content.
+ * 	3/ `event-button`: This is an SVG element that represents a button with an event
+ * icon. It contains the main event handler for the widget.
+ * 	4/ `svg`: The `svg` element within the `event-button` element contains the actual
+ * event icon.
+ * 	5/ `path`: The `path` element within the `svg` element defines the shape of the
+ * event icon.
+ * 	6/ `title`: This attribute sets the tooltip text for the event icon button.
+ * 	7/ `input`: The `input` element is a checkbox that triggers the event handler
+ * when checked.
+ * 	8/ `class`: The `class` attribute adds additional CSS styles to the widget container
+ * and event icon button.
+ * 	9/ `div`: The second `div` element within the `widget` element contains the cart
+ * information.
+ * 	10/ `cart-button`: This is an SVG element that represents a button with a cart
+ * icon. It contains the cart event handler for the widget.
+ * 	11/ `svg`: The `svg` element within the `cart-button` element contains the actual
+ * cart icon.
+ * 	12/ `path`: The `path` element within the `svg` element defines the shape of the
+ * cart icon.
+ * 	13/ `title`: This attribute sets the tooltip text for the cart button.
+ * 
+ * 	These are the properties and attributes of the widget created by the `initWidget`
+ * function.
+ */
 function initWidget() {
   const cartFormElement = document.querySelector(".cart__ctas");
   if (!cartFormElement) return;
@@ -45,6 +83,11 @@ function initWidget() {
   cartFormElement.append(widget);
 }
 
+/**
+ * @description 1) retrieves a widget checkbox element and 2) sets its checked status
+ * based on the value of a local storage item, and also sets an event listener to
+ * update the local storage item when the user changes the checkbox.
+ */
 function configureWidgetCheckbox() {
   const widgetCheckbox = document.querySelector("#widget-checkbox");
   const widgetDisabled = localStorage.getItem("disable-shopify-widget");
@@ -54,6 +97,10 @@ function configureWidgetCheckbox() {
   };
 }
 
+/**
+ * @description queries the DOM for product images, retrieves their URLs, and sends
+ * a POST request to a server with the product name and image URLs as JSON data.
+ */
 function scrapeProductImages() {
   
   const images = document.querySelectorAll(".product__media img");
@@ -80,6 +127,13 @@ function scrapeProductImages() {
 
 // Cart info Event handlers and functions
 
+/**
+ * @description queries and returns an array of cart items' names and prices based
+ * on their corresponding DOM elements.
+ * 
+ * @returns { object } an array of objects containing name and price information for
+ * each cart item.
+ */
 function getCartItems() {
   const items = [];
   document.querySelectorAll(".cart-item__details").forEach((item) => {
@@ -90,11 +144,22 @@ function getCartItems() {
   return items;
 }
 
+/**
+ * @description retrieves the total value displayed on a specific HTML element with
+ * the class "totals__subtotal-value".
+ * 
+ * @returns { string } a string representing the subtotal value of an e-commerce cart.
+ */
 function getCartTotal() {
   const totalContainer = document.querySelector(".totals__subtotal-value");
   return totalContainer ? totalContainer.textContent.trim() : "";
 }
 
+/**
+ * @description creates a modal window containing cart information, including the
+ * number of items and total price, and hooks up a close event to remove the modal
+ * when clicked.
+ */
 function createCartInfoModal() {
   // Create container for the modal
   const modalElement = document.createElement("div");
@@ -122,6 +187,9 @@ function createCartInfoModal() {
   document.body.appendChild(modalElement);
 
   // Hook up the close event to remove the modal
+  /**
+   * @description removes the `modalContainer` and `overlayElement` from the document.
+   */
   function closeModal() {
     modalContainer.remove();
     overlayElement.remove();
@@ -130,6 +198,27 @@ function createCartInfoModal() {
   document.getElementById("closeButton").onclick = closeModal;
 }
 
+/**
+ * @description creates a modal container, an overlay element and attaches event
+ * listeners to remove the modal when closed. It also fetches data from an API and
+ * renders it in a table within the modal.
+ * 
+ * @returns { HTML table with a table header and a table body that contains a list
+ * of product names and images. } a modal window with an event history table containing
+ * product images.
+ * 
+ * 		- `modalElement`: A div element that creates a modal window for displaying event
+ * history information.
+ * 		- `modalContainer`: A div element that contains the content of the modal window,
+ * including an h2 heading, a container for events, and a close button.
+ * 		- `overlayElement`: An div element that creates an overlay window on top of the
+ * page, with a background color and no content.
+ * 		- `eventsContainer`: An id attribute on the div element that contains the events
+ * information. This element will contain a table structure with a header and body
+ * for displaying product names and images.
+ * 		- `data`: A variable that stores the response data from the server, which is
+ * then mapped to create a table of products with name and images.
+ */
 function createEventInfoModal() {
   // Create container for the modal
   const modalElement = document.createElement("div");
@@ -156,6 +245,9 @@ function createEventInfoModal() {
   document.body.appendChild(modalElement);
 
   // Hook up the close event to remove the modal
+  /**
+   * @description removes the modal container and the overlay element from the document.
+   */
   function closeModal() {
     modalContainer.remove();
     overlayElement.remove();
@@ -203,6 +295,10 @@ function createEventInfoModal() {
     });
 }
 
+/**
+ * @description creates a modal and populates it with information about the items in
+ * the cart, including the total cost.
+ */
 function displayCartInfo() {
   createCartInfoModal(); // Ensure modal creation is prior to data insertion.
 
@@ -233,6 +329,11 @@ function displayCartInfo() {
   modal.style.display = "block";
 }
 
+/**
+ * @description 1) creates an event info modal and 2) populates the modal with product
+ * information (name and price) and the total cost using the `items` array and
+ * `getCartTotal` function.
+ */
 function displayEventInfo() {
   createEventInfoModal(); // Ensure modal creation is prior to data insertion.
 
@@ -261,6 +362,10 @@ function displayEventInfo() {
   modal.style.display = "block";
 }
 // All Event Handlers
+/**
+ * @description attaches event listeners to two widget buttons in the HTML document,
+ * respectively displaying cart and event information upon button click.
+ */
 function attachEventHandlers() {
   configureWidgetCheckbox();
   document
@@ -272,6 +377,10 @@ function attachEventHandlers() {
     .addEventListener("click", displayEventInfo);
 }
 
+/**
+ * @description initializes a widget and attaches event handlers, or else it scrapes
+ * product images based on the current location pathname.
+ */
 setTimeout(async () => {
   if (location.pathname.indexOf("cart") !== -1) {
     await initWidget();
