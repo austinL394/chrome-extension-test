@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(
-   function(request, sender, sendResponse) {
+   function(request, _, sendResponse) {
       if (request.action == 'getActiveTabUrl') {
          chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             sendResponse({
@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener(
 );
 
 chrome.runtime.onMessage.addListener(
-   function(request, sender, sendResponse) {
+   function(request, _, sendResponse) {
       if (request.action == 'getDomContent') {
          const fetchDomContent = async () => {
             const tabs = await chrome.tabs.query({active: true, currentWindow: true});

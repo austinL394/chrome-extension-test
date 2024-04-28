@@ -14,7 +14,7 @@ The Chrome Extension is going to send out API requests to record product informa
 - GET     `api/products`	            get all Products
 - POST     `api/products`           create product log and store it to database
 
-
+## 
 ## Database Models
 - Product
    - name: String : name of the product
@@ -40,8 +40,17 @@ After creating some new Tutorials, you can check PostgreSQL table:
   5 | Pitsa       | https://wteberify.com/products/Pitsa/info.jpg  |       | 2020-01-29 10:42:57.121+07 | 2020-01-29 10:42:57.121+07
 
 ```
+## Environment Requireemtns
+
+- Node.js 18.0
+- PostgresDB
 
 ## Project setup
+### Clone the Repository
+```
+git clone git@github.com:austinL394/chrome-extension-test.git
+```
+### Install node modules
 ```
 npm install
 ```
