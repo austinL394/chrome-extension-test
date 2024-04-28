@@ -59,4 +59,6 @@ npm install
 ```
 npm start
 ```
-Server should be available at Port Number: 8080
+Test APIs through Postman
+- POST  `http://localhost:8080/api/posts`
+- GET   `http://localhost:8080/api/posts`
