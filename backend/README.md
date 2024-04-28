@@ -12,7 +12,7 @@ The Chrome Extension is going to send out API requests to record product informa
 
 ## APIs
 - GET     `api/products`	            get all Products
-- POST     `api/products`           create product log and store it to database
+- POST    `api/products`           create product log and store it to database
 
 ## 
 ## Database Models

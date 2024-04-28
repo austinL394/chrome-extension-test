@@ -14,6 +14,9 @@ This app is a chrome extension that embeds UI widgets into Shopify platforms to:
 # Challenges
 - Had difficulty with aligning CSS configuration with Shopify native environment.
 - Embedding custom UI widgets into Shopify webpages required synchronization with existing DOM elements.
+### Solution
+    - Set up inline css where there is CSS conflict.
+    - Wait for the document to be ready and embed UI widgets.
 
 # Requirements
 - Chrome Browser version > 85
