@@ -24,4 +24,4 @@ This app is a chrome extension that embeds UI widgets into Shopify platforms to:
 - The extension displays the information about the cart with product information and total price.
 <br>
 
-![Carts](extension/images/cart.jpg "Cart Info")
+![Carts](/extension/images/cart.jpg "Cart Info")
